@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script  type="text/javascript" src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        function login() {
+            $.ajax({
+                type: "POST",//方法类型
+                url: "http://localhost:8080/web1/" ,//url
+                data: $('#form').serialize(),
+                success: function () {
+                    alert("Ajax提交成功！");
+                },
+                error : function() {
+                    alert("Ajax提交异常！");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<form action="process" method="post" id="form">
+    <!--用户名-->
+    Username:<input type="text" name="username">
+    <br>
+    <!--密码-->
+    Password： <input type="password" name="password">
+    <br>
+    <!--性别-->
+    <input type="radio" name="gander" value="Boy">Boy
+    <input type="radio" name="gander" value="Girl">Girl
+    <br>
+    <!--爱好-->
+    Hobby：
+    <input type="checkbox" name="hobby" value="sing">sing
+    <input type="checkbox" name="hobby" value="dance">dance
+    <input type="checkbox" name="hobby" value="rap">rap
+    <br>
+    University：<select name="address" id="address">
+    <option value="">
+        /*Please Choose*/
+    </option>
+    <option value="HIT-HeiLongJiang">
+        HIT-HeiLongJiang
+    </option>
+    <option value="HIT-Harbin">
+        HIT-Harbin
+    </option>
+    <option value="HIT-NanGang">
+        HIT-NanGang
+    </option>
+</select>
+    <br>
+    <input type="submit" value="使用表格提交方法注册">
+    <p><input type="submit" value="使用Ajax提交方法注册" onclick="login()">&nbsp</p>
+</form>
+
+</body>
+</html>
